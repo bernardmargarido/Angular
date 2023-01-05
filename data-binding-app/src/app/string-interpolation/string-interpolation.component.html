@@ -1,0 +1,21 @@
+<mat-card class="mycard">
+    <mat-card-header>
+        <mat-card-title>Person Date</mat-card-title>
+        <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+        <p>First name: {{ person.fisrtname }}</p>
+        <p>Last name:{{ person.lastname }}</p>
+        <p>Age: {{ person.age }}</p>
+        <p>Address: {{ person.adress }}</p>
+        <mat-form-field class="example-form-field">
+            <mat-label>Clearable input</mat-label>
+            <input matInput type="text" placeholder="Name" value="{{ person.fisrtname }}">
+        </mat-form-field>
+    </mat-card-content>
+    <mat-card-actions>
+        <button mat-button>LIKE</button>
+        <button mat-button>SHARE</button>
+    </mat-card-actions>
+</mat-card>
+  
