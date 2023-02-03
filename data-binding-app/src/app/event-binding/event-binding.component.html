@@ -19,6 +19,50 @@
 
 <section>
     <p>
-        <mat-checkbox color="warn" (change)="cbChange()">Disable / Enalbe</mat-checkbox>
+        <mat-checkbox color="warn" (change)="cbChange($event)">Disable / Enalbe</mat-checkbox>
+    </p>
+
+    <p>
+        <mat-card>
+            <mat-card-content>
+                <mat-form-field appearance="fill">
+                <mat-label>Choose an option</mat-label>
+                <mat-select matNativeControl [disabled]="selectDisable" (selectionChange)="selectionChange($event)">
+                    <mat-option value="" selected></mat-option>
+                    <mat-option value="1">Volvo</mat-option>
+                    <mat-option value="2">Saab</mat-option>
+                    <mat-option value="3">Mercedes</mat-option>
+                    <mat-option value="4">Audi</mat-option>
+                    <mat-option value="5">Alfa Romeo</mat-option>
+                    <mat-option value="6">Ford</mat-option>
+                </mat-select>
+                </mat-form-field>
+            </mat-card-content>
+            <mat-card-actions>
+                <p>Selected option {{ selectedOption }}</p>
+            </mat-card-actions>
+        </mat-card>
+    </p>
+
+</section>
+
+<mat-divider></mat-divider>
+
+<section>
+    <p>
+        <mat-card>
+            <mat-card-content>
+                <mat-form-field appearance="fill">
+                    <mat-label>Input</mat-label>
+                    <input #firstName
+                            matInput placeholder="First name" 
+                            (input)="inputName = firstName.value" 
+                            [value]="inputName">
+                  </mat-form-field>
+            </mat-card-content>
+            <mat-card-actions>
+                Name: {{inputName}}
+            </mat-card-actions>
+        </mat-card>
     </p>
 </section>

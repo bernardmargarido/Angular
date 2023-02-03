@@ -7,13 +7,19 @@ import { Component } from '@angular/core';
 })
 
 export class EventBindingComponent {
-  constructor() { }
+  constructor(){
+
+   }
+   
   buttonName = "MyButton";
   i = 0;
   btnEnable = true;
   spinnerMode = 'determinate'
   spinnerColor= 'primary'
   spinnerValue= 0
+  selectDisable = false
+  selectedOption = 1;
+  inputName = ''
 
   save(){
     console.log("Click");
@@ -34,10 +40,22 @@ export class EventBindingComponent {
     }, 3000)
   }
 
-  cbChange(){
-
+  cbChange(event: any){
+    console.log(event.checked);
+    this.selectDisable = event.checked;
   }
   
+  selectionChange(event: any){
+    console.log(event);
+    this.selectedOption = event.value;
+  }
+
+  /*
+  inputEvent(event: any){
+    console.log(event.target.value);
+    console.log(this.inputName)
+  }
+  */
   ngOnInit() {
   }
 
