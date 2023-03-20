@@ -8,5 +8,5 @@ import { Client } from '../client.model';
 })
 
 export class ClientComponent {
-  @Input() client?: Client 
+  @Input() client!: Client; 
 }

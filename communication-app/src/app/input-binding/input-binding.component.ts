@@ -13,9 +13,10 @@ export class InputBindingComponent {
   @Input() lastName?: string 
   @Input() age?: number
 
-  clients?: Client[]
+  clients: Client[];
 
   constructor(){
+
     this.clients = [
       {id: 1, name: 'Bernard Margararido', age: 40},
       {id: 2, name: 'Ana Carolina Silva', age: 40},
