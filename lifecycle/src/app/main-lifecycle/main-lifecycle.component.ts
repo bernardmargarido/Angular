@@ -15,6 +15,16 @@ export class MainLifecycleComponent {
   public name?: string;
   public age?: number; 
   public food?: string;
+  public randomNumber?: number
+
+  constructor(){
+    this.generateRandomNumber()
+   
+  }
+
+  generateRandomNumber(){
+    this.randomNumber = Math.round(Math.random()*1000)
+  }
 
   save(){
 
