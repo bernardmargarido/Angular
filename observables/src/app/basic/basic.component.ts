@@ -12,7 +12,7 @@ export class BasicComponent implements OnInit{
   subscription1?: Subscription
   subscription2?: Subscription
 
-  n1: number = 0 
+  n1:number = 0 
   n2:number = 0
   s1:string = '' 
   s2:string = ''
@@ -38,7 +38,7 @@ export class BasicComponent implements OnInit{
     myFirstObservable.subscribe(
       (n: number) => console.log(n), 
       (error) => console.error(error),
-      () => console.log('completed'))
+      () => console.log('completed.'))
 
       /*
       const timerCount = interval(500)
@@ -84,7 +84,7 @@ export class BasicComponent implements OnInit{
       setTimeout(()=>{
         this.subscription1?.unsubscribe()
         this.subscription2?.unsubscribe()
-      },4000)
+      },11000)
   }
 
 }
