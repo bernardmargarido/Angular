@@ -1,5 +1,5 @@
 import { Component, OnInit, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
-import { Observable, fromEvent, Observer } from 'rxjs';
+import { Observable, fromEvent, Observer, never } from 'rxjs';
 
 @Component({
   selector: 'app-hot-observables-intro',
@@ -9,7 +9,7 @@ import { Observable, fromEvent, Observer } from 'rxjs';
 
 export class HotObservablesIntroComponent implements OnInit, AfterViewInit{
  
-  @ViewChild('myButton') button?: ElementRef;
+  @ViewChild('myButton') button: any = ElementRef;
 
   n1:number = 0 
   n2:number = 0
@@ -18,28 +18,29 @@ export class HotObservablesIntroComponent implements OnInit, AfterViewInit{
   
   constructor() { }
 
-  ngOnInit(): void {
-   
-  }
-
-  ngAfterViewInit(): void {
-    let myBtnClickObservable: Observable<any> = fromEvent(
-      this.button?.nativeElement , 'click');
+  buttonClick(){
     
+    let myBtnClickObservable: Observable<any> = fromEvent(
+    this.button.nativeElement , 'click');
+
     myBtnClickObservable.subscribe( (event) => console.log('button clicked 1'));
     myBtnClickObservable.subscribe( (event) => console.log('button clicked 2'));
+
+  }
+
+  ngOnInit(): void {
    
     class Producer {
    
-      public myListeners = [];
-      public n = 0;
+      public myListeners: any[] = [];
+      public n: number = 0;
       public id:any;
-  
-      addListener(l: number){
+            
+      addListener(l: any){
         this.myListeners.push(l);
         console.log(this.myListeners.length);
       }
-  
+
       start() {
         this.id = setInterval(()=>{
           this.n++;
@@ -52,15 +53,30 @@ export class HotObservablesIntroComponent implements OnInit, AfterViewInit{
       stop(){
         clearInterval(this.id);
       }
-   
+     
     }
 
     let producer: Producer = new Producer();
     producer.start();
-    producer.addListener((n) => console.log('From listner 1', n));
-    producer.addListener((n) => console.log('From listner 2', n));
-    producer.addListener((n) => console.log('From listner 3', n));
+    setTimeout( () => {
+      producer.addListener((n: any) => console.log('From listner 1', n));
+      producer.addListener((n: any) => console.log('From listner 2', n));
+      producer.addListener((n: any) => console.log('From listner 3', n));
+    }, 4000);
 
+    const myHotObservable = new Observable(
+      (observer: Observer<number>) => {
+        producer.addListener( (n: any) => observer.next(n));
+      }
+    );
+
+    myHotObservable.subscribe((n) => console.log('From Subscriber 1', n));
+    myHotObservable.subscribe((n) => console.log('From Subscriber 2', n));
+
+  }
+
+  ngAfterViewInit(): void {
+    this.buttonClick();
    }
    
   
