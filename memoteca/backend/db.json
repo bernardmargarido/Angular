@@ -1,0 +1,40 @@
+{
+  "pensamentos": [
+    {
+      "conteudo": "Utilizar a ferramenta angular\\CLI para criar um projeto Angular",
+      "autoria": "Curso Angular",
+      "modelo": "modelo1",
+      "id": 1
+    },
+    {
+      "conteudo": "Conhecer a estrutura de um componente Angular (HTML, CSS e TS).",
+      "autoria": "Curso Angular",
+      "modelo": "modelo2",
+      "id": 2
+    },
+    {
+      "conteudo": "Entender como ocorre o fluxo de dados no componente",
+      "autoria": "Curso Angular",
+      "modelo": "modelo3",
+      "id": 3
+    },
+    {
+      "conteudo": "Utilizar rotas para adicionar navegação dinâmica entre as telas da aplicação.",
+      "autoria": "Curso Angular",
+      "modelo": "modelo1",
+      "id": 4
+    },
+    {
+      "conteudo": "Aprender o que são e como utilizar algumas das principais diretivas do Angular.",
+      "autoria": "Curso Angular",
+      "modelo": "modelo2",
+      "id": 5
+    },
+    {
+      "conteudo": "Compreender o que são services e como utilizar injeção de dependências. ",
+      "autoria": "Curso Angular",
+      "modelo": "modelo3",
+      "id": 6
+    }
+  ]
+}
