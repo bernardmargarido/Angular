@@ -4,55 +4,64 @@
       "conteudo": "Utilizar a ferramenta angular\\CLI para criar um projeto Angular",
       "autoria": "Curso Angular",
       "modelo": "modelo1",
-      "id": 1
+      "id": 1,
+      "favorito": true
     },
     {
       "conteudo": "Conhecer a estrutura de um componente Angular (HTML, CSS e TS).",
       "autoria": "Curso Angular",
       "modelo": "modelo2",
-      "id": 2
+      "id": 2,
+      "favorito": false
     },
     {
       "conteudo": "Entender como ocorre o fluxo de dados no componente",
       "autoria": "Curso Angular",
       "modelo": "modelo3",
-      "id": 3
+      "id": 3,
+      "favorito": false
     },
     {
       "conteudo": "Utilizar rotas para adicionar navegação dinâmica entre as telas da aplicação.",
       "autoria": "Curso Angular",
       "modelo": "modelo1",
-      "id": 4
+      "id": 4,
+      "favorito": false
     },
     {
       "conteudo": "Aprender o que são e como utilizar algumas das principais diretivas do Angular.",
       "autoria": "Curso Angular",
       "modelo": "modelo2",
-      "id": 5
+      "id": 5,
+      "favorito": false
     },
     {
       "conteudo": "Compreender o que são services e como utilizar injeção de dependências. ",
       "autoria": "Curso Angular",
       "modelo": "modelo3",
-      "id": 6
+      "id": 6,
+      "favorito": false
     },
     {
+      "id": 7,
       "conteudo": " Teste de formulario",
-      "autoria": "BMM",
+      "autoria": "Bmm",
       "modelo": "modelo1",
-      "id": 7
+      "favorito": true
     },
     {
       "conteudo": "aaaaaa",
       "autoria": "aaaaaa",
       "modelo": "modelo3",
-      "id": 8
+      "id": 8,
+      "favorito": true
     },
     {
       "conteudo": "Teste de pensamento ",
       "autoria": "ass",
       "modelo": "modelo2",
-      "id": 9
+      "id": 9,
+      "favorito": false
     }
   ]
 }
