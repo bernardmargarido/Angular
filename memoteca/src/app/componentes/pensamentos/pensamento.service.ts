@@ -13,13 +13,18 @@ export class PensamentoService {
 
   }
 
+<<<<<<< HEAD
   listar(pagina: number, filtro: string, favoritos: boolean): Observable<Pensamento[]>{
+=======
+  listar(pagina: number, filtro: string): Observable<Pensamento[]>{
+>>>>>>> bb071b825e9b927a095d39b9dc65510cbdcb0b19
     const itensPorPagina = 6
 
     let params = new HttpParams()
       .set("_page",pagina)
       .set("_limit",itensPorPagina)
 
+<<<<<<< HEAD
     if(filtro.trim().length > 2){
       params = params.set("q",filtro)
     }
@@ -27,6 +32,11 @@ export class PensamentoService {
     if(favoritos){
       params = params.set("favorito",true)
     }
+=======
+      if(filtro.trim().length > 2){
+        params = params.set("q",filtro)
+      }
+>>>>>>> bb071b825e9b927a095d39b9dc65510cbdcb0b19
 
     return this.http.get<Pensamento[]>(this.API,{params});
 

@@ -14,6 +14,7 @@ export class ListarPensamentoComponent implements OnInit {
   paginaAtual: number = 1
   haMaisPensamentos:boolean = true
   filtro: string = ''
+<<<<<<< HEAD
   favoritos: boolean = false
   listaFavoritos: Pensamento[] = []
   titulo: string = 'Meu Mural'
@@ -24,12 +25,24 @@ export class ListarPensamentoComponent implements OnInit {
 
   ngOnInit(): void {
     this.service.listar(this.paginaAtual,this.filtro, this.favoritos).subscribe((listaPensamentos) => {
+=======
+
+  constructor(private service: PensamentoService){
+  }
+
+  ngOnInit(): void {
+    this.service.listar(this.paginaAtual,this.filtro).subscribe((listaPensamentos) => {
+>>>>>>> bb071b825e9b927a095d39b9dc65510cbdcb0b19
       this.listaPensamentos = listaPensamentos
     })
   }
 
   carregarMaisPensamentos(){
+<<<<<<< HEAD
     this.service.listar(++this.paginaAtual,this.filtro,this.favoritos)
+=======
+    this.service.listar(++this.paginaAtual,this.filtro)
+>>>>>>> bb071b825e9b927a095d39b9dc65510cbdcb0b19
       .subscribe(listaPensamentos => {
         this.listaPensamentos.push(...listaPensamentos)
         if(!listaPensamentos.length) {
@@ -41,12 +54,17 @@ export class ListarPensamentoComponent implements OnInit {
   pesquisarPensamentos(){
     this.haMaisPensamentos = true
     this.paginaAtual = 1
+<<<<<<< HEAD
     this.service.listar(this.paginaAtual,this.filtro,this.favoritos)
+=======
+    this.service.listar(this.paginaAtual,this.filtro)
+>>>>>>> bb071b825e9b927a095d39b9dc65510cbdcb0b19
       .subscribe(listaPensamentos => {
         this.listaPensamentos = listaPensamentos
       })
   }
 
+<<<<<<< HEAD
   recarregarComponente(){
     this.favoritos = false
     this.paginaAtual = 1
@@ -67,4 +85,6 @@ export class ListarPensamentoComponent implements OnInit {
       })
   }
 
+=======
+>>>>>>> bb071b825e9b927a095d39b9dc65510cbdcb0b19
 }
