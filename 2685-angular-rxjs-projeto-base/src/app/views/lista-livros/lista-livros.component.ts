@@ -1,7 +1,7 @@
 import { FormControl } from '@angular/forms';
-import { Item } from './../../models/interfaces';
+import { Item, LivrosResultado } from './../../models/interfaces';
 import { Component } from '@angular/core';
-import { debounceTime, distinctUntilChanged, filter, map, switchMap, tap } from 'rxjs';
+import { debounceTime, distinctUntilChanged, filter, map, switchMap, tap, throwError, catchError, EMPTY, of } from 'rxjs';
 import { LivroVolumeInfo } from 'src/app/models/livroVolumeInfo';
 import { LivroService } from 'src/app/service/livro.service';
 
@@ -15,20 +15,58 @@ export class ListaLivrosComponent {
 
   //listaLivros: Livro[];
   campoBusca = new FormControl()
+  mensagemErro = ''
+  livrosResultado: LivrosResultado
+
   //subscription: Subscription
   //livro: Livro
 
   constructor(private service: LivroService) {}
 
-  livrosEncontrados$ = this.campoBusca.valueChanges
-    .pipe(
+  /*
+  totalDeLivros$ = this.campoBusca.valueChanges
+  .pipe(
+    debounceTime(pausa),
+    filter((valorDigitado) => valorDigitado.length >= 3),
+    tap(() => console.log('Fluxo Inicial')),
+    distinctUntilChanged(),
+    switchMap((valorDigitado) => this.service.buscar(valorDigitado)),
+    map(resultado => this.livrosResultado = resultado),
+    catchError(erro => {
+      console.log(erro)
+      return of()
+    })
+    )
+  */
+ 
+  livrosEncontrados$ = this.campoBusca.valueChanges.pipe(
       debounceTime(pausa),
-      filter((valorDigitado) => valorDigitado.length >= 3),
-      tap(() => console.log('Fluxo Inicial')),
-      distinctUntilChanged(),
-      switchMap((valorDigitado) => this.service.buscar(valorDigitado)),
-      tap((retronoAPI) => console.log('Requisicao ao servidor', retronoAPI)),
-      map((items) => this.livrosResultadoParaLivros(items))
+      tap(() => { 
+          console.log('Fluxo Inicial')
+      }),
+      filter((
+          valorDigitado) => valorDigitado.length >= 3
+      ),
+      //distinctUntilChanged(),
+      switchMap(
+        (valorDigitado) => this.service.buscar(valorDigitado)
+      ),
+      //tap((retronoAPI) => console.log('Requisicao ao servidor', retronoAPI)),
+      map(
+          resultado => this.livrosResultado = resultado
+      ),
+      map(
+          resultado => resultado.items ?? []
+      ),
+      map(
+          (items) => this.livrosResultadoParaLivros(items)
+      ),
+      catchError(erro => {
+        //this.mensagemErro = 'Ops, ocorreu um erro, Recarregue a aplicacao!'
+        //return EMPTY
+        console.log(erro)
+        return throwError( () => new Error(this.mensagemErro = 'Ops, ocorreu um erro, Recarregue a aplicacao.'))
+      })
       //(items) => this.listaLivros = this.livrosResultadoParaLivros(items))
     )
   /*
