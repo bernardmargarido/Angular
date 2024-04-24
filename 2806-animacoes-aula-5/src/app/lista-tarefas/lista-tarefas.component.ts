@@ -4,7 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { TarefaService } from 'src/app/service/tarefa.service';
 import { Tarefa } from '../interface/tarefa';
-import { checkButtonTrigger, highlightedStateTrigger, shownStateTrigger } from '../animations';
+import { checkButtonTrigger, filterTrigger, highlightedStateTrigger, shownStateTrigger } from '../animations';
 
 @Component({
   selector: 'app-lista-tarefas',
@@ -13,7 +13,8 @@ import { checkButtonTrigger, highlightedStateTrigger, shownStateTrigger } from '
   animations: [
     highlightedStateTrigger,
     shownStateTrigger,
-    checkButtonTrigger
+    checkButtonTrigger,
+    filterTrigger
   ]
 })
 export class ListaTarefasComponent implements OnInit {
@@ -48,6 +49,19 @@ export class ListaTarefasComponent implements OnInit {
     return this.tarefasFiltradas;
   }
 
+
+  filtrarTarefasPorDescricao() : void {
+    const descricao = this.campoBusca
+    this.campoBusca = descricao.trim().toLowerCase();
+    if (descricao) {
+      this.tarefasFiltradas = this.listaTarefas.filter(tarefa =>
+        tarefa.descricao.toLowerCase().includes(this.campoBusca));
+    } else {
+      this.tarefasFiltradas = this.listaTarefas;
+    }
+  }
+
+  /*
   filtrarTarefasPorDescricao(): void {
     const descricao = this.campoBusca.trim().toLowerCase()
     if(descricao){
@@ -58,6 +72,7 @@ export class ListaTarefasComponent implements OnInit {
       this.tarefasFiltradas = this.listaTarefas
     }
   }
+  */
 
   mostrarOuEsconderFormulario() {
     this.formAberto = !this.formAberto;
