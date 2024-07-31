@@ -37,7 +37,7 @@
     },
     {
       "id": 7,
-      "descricao": "Alimentar os gatos",
+      "descricao": "Alimentar os gatos as",
       "categoria": "Casa",
       "statusFinalizado": false,
       "prioridade": "Alta"
@@ -54,6 +54,13 @@
       "descricao": "Fazer curso de animações",
       "statusFinalizado": false,
       "categoria": "Estudos",
+      "prioridade": "Alta"
+    },
+    {
+      "id": 10,
+      "descricao": "Teste ",
+      "categoria": "Casa",
+      "statusFinalizado": false,
       "prioridade": "Alta"
     }
   ]
