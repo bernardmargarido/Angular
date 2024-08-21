@@ -1,4 +1,5 @@
-import { animate, animation, group, keyframes, query, state, style, transition, trigger } from '@angular/animations';
+import { animate, animation, group, keyframes, query, stagger, state, style, transition, trigger } from '@angular/animations';
+import { Optional } from '@angular/core';
 
 export const highlightedStateTrigger = trigger('highlightedState', [
   state('default', style({
@@ -31,7 +32,6 @@ export const shownStateTrigger = trigger('shownState', [
     }))
   ])
 ])
-
 
 export const checkButtonTrigger = trigger('checkButton', [
   transition('* => checked', [
@@ -139,5 +139,30 @@ export const shakeTrigger = trigger('shakeAnimation',[
         style({ border: '1px solid black'})
       ]))
     ], { optional: true })
+  ])
+])
+
+export const listStateTrigger = trigger('listState',[
+  transition('* => *', [
+    query(':enter', [
+      style({
+        opacity: 0,
+        transform: 'translateX(-100%)'
+        }),
+        stagger(200,[
+          animate('500ms ease-in-out', keyframes([
+            style({
+              opacity: 1,
+              transform: 'translateX(15%)',
+              offset: 0.4
+            }),
+            style({
+              opacity: 1,
+              transform: 'translateX(0)',
+              offset: 1
+            })
+        ]))
+      ])
+    ], {optional: true} )    
   ])
 ])
