@@ -6,7 +6,9 @@ import { FormBuscaService } from 'src/app/core/services/form-busca.service';
   templateUrl: './form-busca.component.html',
   styleUrls: ['./form-busca.component.scss']
 })
+
 export class FormBuscaComponent {
+  
   @Output() realizarBusca = new EventEmitter()
 
   constructor( 
